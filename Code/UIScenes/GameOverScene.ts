@@ -1,6 +1,6 @@
 export { GameOverScene }
 
-import * as TBX from "engineer-js";
+import * as TBX from "toybox-engine";
 
 import { UIScene } from "./UIScene";
 import { GameScene } from "./../Game/GameScene";

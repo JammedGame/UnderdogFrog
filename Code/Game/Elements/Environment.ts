@@ -1,12 +1,11 @@
 export { Environment }
 
-import * as TBX from "engineer-js";
+import * as TBX from "toybox-engine";
 
 import { Flipper } from "./Flipper";
 
 class Environment extends TBX.Tile
 {
-    
     private _Scene:TBX.Scene2D;
     private _Water:TBX.Tile;
     private _Surface:TBX.Tile;
@@ -38,7 +37,14 @@ class Environment extends TBX.Tile
         this._Underwater.Fixed = true;
         this._WaterSurface = TBX.SceneObjectUtil.CreateTile("WaterSurface", ["Resources/Textures/Assets/WaterSurface.png"], new TBX.Vertex(960, 850, 0.1), new TBX.Vertex(1920, 40, 1));
         this._WaterSurface.Fixed = true;
-        Flipper.Current.OnSwitch.push(this.OnSwitchMode.bind(this));
+        if(Flipper.Current)
+        {
+            Flipper.Current.OnSwitch.push(this.OnSwitchMode.bind(this));    
+        }
+    }
+    public Reset() : void
+    {
+        this.Update();
     }
     public OnAttach(Args:any) : void
     {

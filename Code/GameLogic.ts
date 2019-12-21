@@ -1,6 +1,6 @@
 export { GameLogic };
 
-import * as TBX from "engineer-js";
+import * as TBX from "toybox-engine";
 
 import { SoundManager } from "./SoundManager";
 import { MenuScene } from "./UIScenes/MenuScene";
@@ -27,7 +27,7 @@ class GameLogic
     }
     private Init() : void
     {
-        TBX.Settings.GlobalFontFamily = "Arial";
+        TBX.Settings.GlobalFontFamily = "Luckiest Guy";
         if(window.location.href.indexOf("itch.io") != -1)
         {
             TBX.Settings.GlobalFontScale = 0.67;

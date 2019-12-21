@@ -1,6 +1,6 @@
 export { UIScene }; 
 
-import * as TBX from "engineer-js";
+import * as TBX from "toybox-engine";
 
 import { Slider } from "./Elements/Slider";
 
@@ -43,14 +43,14 @@ class UIScene extends TBX.Scene2D
         let Button:TBX.Button = new TBX.Button(null, Text);
         Button.Name = Text;
         Button.TextSize = 60;
-        Button.Size = new TBX.Vertex(300,120);
-        Button.Position = new TBX.Vertex(260 + 350 * Order, 960, 0.2);
+        Button.Size = new TBX.Vertex(360,120);
+        Button.Position = new TBX.Vertex(400 + 280 * Order, 960, 0.2);
         Button.Padding = 20;
         Button.ForeColor = TBX.Color.FromRGBA(244,208,63,255);
-        Button.BackColor = TBX.Color.Black;
+        Button.BackColor = TBX.Color.FromString("#1A1A1A");
         Button.Border.Width = 5;
         Button.Border.Radius = 55;
-        Button.Border.Color = TBX.Color.Red;
+        Button.Border.Color = TBX.Color.FromRGBA(255,127,80,255);
         this.Attach(Button);
         return Button;
     }
@@ -58,11 +58,12 @@ class UIScene extends TBX.Scene2D
     {
         let Label:TBX.Label = new TBX.Label(null, Text);
         Label.Name = Text;
-        Label.Size = new TBX.Vertex(800, 50);
+        Label.Size = new TBX.Vertex(800, 80);
         Label.TextSize = 40;
-        Label.Position = new TBX.Vertex(960, 400 + 60 * Order, 0.2);
+        Label.Position = new TBX.Vertex(960, 400 + 100 * Order, 0.2);
         Label.ForeColor = this._OverColor;
         Label.Border.Width = 0;
+        Label.Font = 'Pacifico';
         this.Attach(Label);
         return Label;
     }
@@ -70,7 +71,7 @@ class UIScene extends TBX.Scene2D
     {
         let NewSlider:Slider = new Slider(null, Text, Value);
         NewSlider.Name = Text;
-        NewSlider.Position = new TBX.Vertex(960, 500 + 120 * Order, 0.2);
+        NewSlider.Position = new TBX.Vertex(960, 450 + 120 * Order, 0.2);
         this.Attach(NewSlider);
         return NewSlider;
     }

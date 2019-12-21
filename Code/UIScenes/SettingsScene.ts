@@ -1,6 +1,6 @@
 export { SettingsScene }
 
-import * as TBX from "engineer-js";
+import * as TBX from "toybox-engine";
 
 import { UIScene } from "./UIScene"; 
 import { Slider } from "./Elements/Slider";
@@ -30,6 +30,7 @@ class SettingsScene extends UIScene
     {
         this.Name = "Settings";
         this._Title.Text = "Settings";
+        this._Title.ForeColor = TBX.Color.FromRGBA(244,208,63,255);
         this.CreateBackground("Lower");
         this._OverColor = TBX.Color.FromRGBA(23,38,49,255);
         this._MasterVolume = this.CreateSlider("Master Volume", SoundManager.MasterVolume, 0);

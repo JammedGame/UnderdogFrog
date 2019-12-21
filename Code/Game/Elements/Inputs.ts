@@ -1,5 +1,7 @@
 export { Inputs }
 
+import { SoundManager } from "../../SoundManager";
+
 class Inputs
 {
     private static _SpaceDown:boolean;

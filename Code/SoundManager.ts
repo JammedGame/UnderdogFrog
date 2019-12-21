@@ -1,11 +1,11 @@
 export { SoundManager }
 
-import * as TBX from "engineer-js";
+import * as TBX from "toybox-engine";
 
 const VOLUME_FACTOR = 100;
-const DEFAULT_MASTER_VOLUME = 1.0;
-const DEFAULT_MUSIC_VOLUME = 0.8;
-const DEFAULT_SOUND_VOLUME = 0.8;
+const DEFAULT_MASTER_VOLUME = 0.5;
+const DEFAULT_MUSIC_VOLUME = 0.2;
+const DEFAULT_SOUND_VOLUME = 0.5;
 
 class SoundManager
 {
@@ -45,21 +45,24 @@ class SoundManager
         this._MasterVolume = DEFAULT_MASTER_VOLUME;
         this._MusicVolume = DEFAULT_MUSIC_VOLUME;
         this._SoundVolume = DEFAULT_SOUND_VOLUME;
-        this._Music = new TBX.SoundObject("Resources/Sounds/Music.mp3");
+        this._Music = new TBX.SoundObject("Resources/Sounds/Music.wav");
         this._Music.Volume = VOLUME_FACTOR * DEFAULT_MUSIC_VOLUME;
         this._Music.Looped = true;
         this._Music.Play();
         this._SoundsPaths = 
         [
-            { Name:"Special", File:"Special.wav" }
+            { Name:"Move", File:"Move.wav" },
+            { Name:"Splash", File:"Splash.wav" },
+            { Name:"Stork", File:"Stork.wav" },
+            { Name:"Snake", File:"Snake.wav" }
         ];
         this._Sounds = {};
         for(let i in this._SoundsPaths)
         {
-            let Sound:TBX.SoundObject = new TBX.SoundObject("Resources/Sounds/"+this._SoundsPaths[i].Path);
-            Sound.Autoplay = !!this._SoundsPaths[i].Autoplay;
+            let Sound:TBX.SoundObject = new TBX.SoundObject("Resources/Sounds/"+this._SoundsPaths[i].File);
+            Sound.Volume = VOLUME_FACTOR * DEFAULT_SOUND_VOLUME;
             Sound.Looped = !!this._SoundsPaths[i].Looped;
-            Sound.Volume = this._SoundsPaths[i].Volume || VOLUME_FACTOR * DEFAULT_SOUND_VOLUME;
+            Sound.Autoplay = !!this._SoundsPaths[i].Autoplay;
             this._Sounds[this._SoundsPaths[i].Name] = Sound;
         }
     }
@@ -74,7 +77,6 @@ class SoundManager
     private UpdateVolumes() : void
     {
         this._Music.Volume = this._MasterVolume * this._MusicVolume;
-        console.log(this._Music.Volume);
         for(let i in this._SoundsPaths)
         {
             this._Sounds[this._SoundsPaths[i].Name].Volume = this._MasterVolume * this._SoundVolume;

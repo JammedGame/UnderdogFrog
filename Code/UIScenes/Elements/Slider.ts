@@ -1,6 +1,6 @@
 export { Slider }
 
-import * as TBX from "engineer-js";
+import * as TBX from "toybox-engine";
 
 class Slider extends TBX.Tile
 {
@@ -27,12 +27,12 @@ class Slider extends TBX.Tile
     {
         this._Percent = Value;
         this.Size = new TBX.Vertex(800, 50, 1);
-        this.Paint = TBX.Color.FromString("#444444");
+        this.Paint = TBX.Color.FromRGBA(50,50,50,50);
         this._Pointer = TBX.SceneObjectUtil.CreateTile("SliderPointer", null, new TBX.Vertex(), new TBX.Vertex(800, 50, 1));
-        this._Pointer.Paint = TBX.Color.Black;
+        this._Pointer.Paint = TBX.Color.FromRGBA(244,208,63,255);
         this.Events.Click.push(this.Click.bind(this));
         this._Label = new TBX.Label(null, Text);
-        this._Label.ForeColor = TBX.Color.Black;
+        this._Label.ForeColor = TBX.Color.FromRGBA(244,208,63,255);
         this._Label.Size = new TBX.Vertex(960, 45);
         this._Label.TextSize = 30;
         this._Label.Border.Width = 0;
